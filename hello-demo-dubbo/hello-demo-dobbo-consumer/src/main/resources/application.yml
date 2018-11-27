@@ -1,0 +1,30 @@
+demo:
+  service:
+    version: 1.0.0
+dubbo:
+  application:
+    id: hello-demo-dobbo-consumer
+    name: hello-demo-dobbo-consumer
+  protocol:
+    id: dubbo
+    name: dubbo
+#      序列化
+    serialization: kryo
+    port: 12345
+#    负载均衡
+    consumer:
+      loadbalance: roundrobin
+
+  registry:
+    address: zookeeper://192.168.153.129:2181?backup=192.168.153.129:2182,192.168.153.129:2183
+    id: zookeeper
+  scan:
+    basePackages: com.zcy.hello.demo.dobbo.consumer
+
+#management:
+#  port: 8081
+server:
+  port: 8081
+spring:
+  application:
+    name: hello-demo-dobbo-consumer

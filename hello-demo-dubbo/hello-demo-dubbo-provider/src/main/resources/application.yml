@@ -1,0 +1,34 @@
+demo:
+  service:
+    version: 1.0.0
+dubbo:
+  application:
+    id: hello-demo-dubbo-provider
+    name: hello-demo-dubbo-provider
+  protocol:
+    id: dubbo
+    name: dubbo
+#      序列化
+    serialization: kryo
+    port: 12345
+#    负载均衡
+    provider:
+      loadbalance: roundrobin
+
+  registry:
+    address: zookeeper://192.168.153.129:2181?backup=192.168.153.129:2182,192.168.153.129:2183
+    id: zookeeper
+  scan:
+    basePackages: com.zcy.hello.demo.dubbo.provider
+
+spring:
+  application:
+    name: hello-demo-dubbo-provider
+
+
+#management:
+#  server:
+#    port: 9092
+#
+#server:
+#  port: 9091
